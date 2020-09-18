@@ -10,5 +10,5 @@ interface Api {
     @GET("key=${BuildConfig.ApiKey}")
     fun getImages(
         @Query("q") query: String
-    ): Flowable<List<ImagesModel>>
+    ): Flowable<ImagesModel>
 }
