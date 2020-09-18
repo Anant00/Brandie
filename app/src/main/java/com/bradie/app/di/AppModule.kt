@@ -1,6 +1,7 @@
 package com.bradie.app.di
 
 import com.bradie.app.apiservice.Api
+import com.bradie.app.repository.networkbound.RepoPixabayNetwork
 import com.bradie.app.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -41,6 +42,12 @@ class AppModule {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder().addInterceptor(interceptor).build()
+    }
+
+    @Singleton
+    @Provides
+    fun providePixabayRepo(api: Api): RepoPixabayNetwork {
+        return RepoPixabayNetwork(api = api)
     }
 
 }
