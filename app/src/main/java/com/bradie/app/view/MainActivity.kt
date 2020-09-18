@@ -1,7 +1,8 @@
-package com.bradie.app
+package com.bradie.app.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bradie.app.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
