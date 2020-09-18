@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface Api {
 
-    @GET("key=${BuildConfig.ApiKey}")
+    @GET("?key=${BuildConfig.ApiKey}")
     fun getImages(
         @Query("q") query: String
     ): Flowable<ImagesModel>
