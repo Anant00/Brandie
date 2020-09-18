@@ -1,5 +1,6 @@
 package com.bradie.app.repository.networkbound
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.bradie.app.apiservice.Api
 import com.bradie.app.apiservice.ImagesModel
@@ -14,7 +15,7 @@ import kotlin.math.pow
 class RepoPixabayNetwork
 @Inject constructor(private val api: Api) {
 
-    fun loadImage(query: String): MediatorLiveData<ViewStatus<ImagesModel>> {
+    fun loadImage(query: String): LiveData<ViewStatus<ImagesModel>> {
         val imageData: MediatorLiveData<ViewStatus<ImagesModel>> = MediatorLiveData()
         val source = api.getImages(
             query = query
