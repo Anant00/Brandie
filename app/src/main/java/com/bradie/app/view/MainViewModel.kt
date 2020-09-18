@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class MainViewModel
 @ViewModelInject
-constructor(val repoPixabayNetwork: RepoPixabayNetwork): ViewModel() {
+constructor(private val repoPixabayNetwork: RepoPixabayNetwork): ViewModel() {
 
     private var _viewStatus: LiveData<ViewStatus<ImagesModel>>
             = MutableLiveData(ViewStatus.loading(data = null, msg = "Uninitialised"))
