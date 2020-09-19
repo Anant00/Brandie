@@ -25,7 +25,7 @@
         android:layout_margin="8dp"
         android:padding="8dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="8dp">
+        app:cardElevation="0dp">
 
         <ImageView
             android:id="@+id/image"
@@ -34,8 +34,7 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/m4"
-            app:height="@{height}"
-            app:imageUrl="@{item.largeImageURL}"
+            app:imageUrl="@{item.webformatURL}"
             tools:ignore="ContentDescription" />
 
     </com.google.android.material.card.MaterialCardView>
