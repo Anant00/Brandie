@@ -17,6 +17,12 @@ class RepoPixabayNetwork
 
     fun loadImage(query: String): LiveData<ViewStatus<ImagesModel>> {
         val imageData: MediatorLiveData<ViewStatus<ImagesModel>> = MediatorLiveData()
+        imageData.postValue(
+            ViewStatus.loading(
+                "Loading",
+                null
+            )
+        )
         val source = api.getImages(
             query = query
         )
@@ -45,7 +51,11 @@ class RepoPixabayNetwork
                 }
             }
             .map {
-                ViewStatus.success(it)
+                if (it.hits.isNullOrEmpty()) {
+                    ViewStatus.error(msg = "No result found. Try again with different query.")
+                } else {
+                    ViewStatus.success(it)
+                }
             }
             .doOnError {
                 ViewStatus.error(msg = it.message, data = null)
