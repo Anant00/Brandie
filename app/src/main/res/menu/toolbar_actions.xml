@@ -4,13 +4,13 @@
     <item
         android:id="@+id/action_upload"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="@string/settings"
+        android:title="@string/add_photo"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_favorite"
         android:icon="@drawable/ic_baseline_settings_24"
-        android:title="@string/add_photo"
+        android:title="@string/settings"
         app:showAsAction="always"/>
 
 </menu>
