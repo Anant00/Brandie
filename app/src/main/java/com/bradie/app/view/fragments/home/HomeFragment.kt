@@ -34,6 +34,7 @@ class HomeFragment: Fragment() {
     private fun setViewPager() {
         val adapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = adapter
+        binding.viewPager.offscreenPageLimit = 3
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = getTabTitle(position)

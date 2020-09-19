@@ -19,7 +19,6 @@ object BindingAdapters {
     @JvmStatic
     fun loadImage(view: ImageView, imageUrl: String?) {
         if(!imageUrl.isNullOrEmpty()) {
-            println("user url is $imageUrl")
             Picasso.get()
                 .load(imageUrl)
                 .tag("image")

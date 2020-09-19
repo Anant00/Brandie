@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         initListeners()
     }
 
-
-
     private fun initListeners() {
         supportFragmentManager.beginTransaction()
             .show(homeFragment).commit()
