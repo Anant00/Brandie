@@ -4,4 +4,6 @@
     <string name="search">Search</string>
     <string name="brands">Brands</string>
     <string name="profile">Profile</string>
+    <string name="explore">Explore</string>
+    <string name="settings">Settings</string>
 </resources>
