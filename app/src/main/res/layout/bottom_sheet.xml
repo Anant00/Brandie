@@ -14,7 +14,7 @@
         android:fontFamily="@font/bold"
         android:gravity="start"
         android:padding="8dp"
-        android:text="Share"
+        android:text="@string/share"
         android:textColor="@color/colorBlack"
         android:textSize="19sp" />
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Facebook"
+            android:text="@string/facebook"
             android:textColor="@color/colorBlack"
             android:textSize="16sp" />
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Instagram"
+            android:text="@string/instagram"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
     </LinearLayout>
@@ -92,7 +92,7 @@
         android:fontFamily="@font/bold"
         android:gravity="start"
         android:padding="8dp"
-        android:text="More"
+        android:text="@string/more"
         android:textColor="@color/colorBlack"
         android:textSize="19sp" />
 
@@ -128,7 +128,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Rate"
+            android:text="@string/rate"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
     </LinearLayout>
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="Download"
+            android:text="@string/download"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
 
