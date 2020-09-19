@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import com.bradie.app.adapters.FOLLOWING_FRAGMENT
 import com.bradie.app.adapters.TRENDING_FRAGMENT
 import com.bradie.app.adapters.ViewPagerAdapter
-import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.databinding.FragmentHomeBinding
-import com.bradie.app.utils.Status
-import com.bradie.app.utils.ViewStatus
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,16 +28,7 @@ class HomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println("HOME FRAGMENT")
         setViewPager()
-    }
-    private fun processData(data: ViewStatus<ImagesModel>) {
-
-        when(data.status) {
-            Status.SUCCESS -> {}
-            Status.ERROR -> {}
-            Status.LOADING -> {}
-        }
     }
 
     private fun setViewPager() {
