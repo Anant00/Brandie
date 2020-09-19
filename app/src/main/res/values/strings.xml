@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Brandie</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="brands">Brands</string>
+    <string name="profile">Profile</string>
 </resources>
