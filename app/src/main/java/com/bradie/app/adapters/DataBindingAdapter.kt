@@ -7,18 +7,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bradie.app.BR
+import kotlinx.android.synthetic.main.item_cards_layout.view.*
 
 
 abstract class DataBindingAdapter<T>(
     diffCallback: DiffUtil.ItemCallback<T>,
+    private val onItemClick: OnItemClick
 ) :
     ListAdapter<T, DataBindingAdapter.DataBindingViewHolder<T>>(diffCallback) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<T> {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding =
             DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
-        return DataBindingViewHolder(binding)
+
+        val viewHolder: DataBindingViewHolder<T> = DataBindingViewHolder(binding)
+        try {
+            binding.root.imMore.setOnClickListener {
+                onItemClick.onItemClick(viewHolder.adapterPosition)
+            }
+        } catch (e: Exception) {
+            println("ViewType is different")
+        }
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) =
@@ -33,4 +43,8 @@ abstract class DataBindingAdapter<T>(
             binding.executePendingBindings()
         }
     }
+}
+
+interface OnItemClick {
+    fun onItemClick(position: Int)
 }

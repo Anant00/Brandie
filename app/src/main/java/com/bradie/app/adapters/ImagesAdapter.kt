@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.DiffUtil
 import com.bradie.app.R
 import com.bradie.app.apiservice.Hit
 
-class ImagesAdapter :
-    DataBindingAdapter<Hit>(DiffCallBack()) {
+class ImagesAdapter constructor(onItemClick: OnItemClick) :
+    DataBindingAdapter<Hit>(DiffCallBack(), onItemClick) {
 
     class DiffCallBack : DiffUtil.ItemCallback<Hit>() {
         override fun areItemsTheSame(oldItem: Hit, newItem: Hit): Boolean {

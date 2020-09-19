@@ -7,21 +7,25 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.bradie.app.R
 import com.bradie.app.adapters.ImagesAdapter
+import com.bradie.app.adapters.OnItemClick
 import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.databinding.FragmentTrendingBinding
 import com.bradie.app.utils.DEFAULT_QUERY
 import com.bradie.app.utils.Status
 import com.bradie.app.utils.ViewStatus
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TrendingFragment : Fragment() {
+class TrendingFragment : Fragment(), OnItemClick {
     private lateinit var binding: FragmentTrendingBinding
     private val homeViewModel: HomeViewModel by viewModels()
-    private val imagesAdapter: ImagesAdapter by lazy { ImagesAdapter() }
+    private val imagesAdapter: ImagesAdapter by lazy { ImagesAdapter(this) }
+    private lateinit var dialog: BottomSheetDialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,7 @@ class TrendingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
+        setBottomSheet()
         homeViewModel.loadData(DEFAULT_QUERY)
         homeViewModel.data.observe(viewLifecycleOwner, ::processData)
     }
@@ -72,6 +77,16 @@ class TrendingFragment : Fragment() {
             setHasFixedSize(true)
             adapter = imagesAdapter
         }
+    }
+
+    private fun setBottomSheet() {
+        val view: View = layoutInflater.inflate(R.layout.bottom_sheet, null)
+        dialog = BottomSheetDialog(requireContext())
+        dialog.setContentView(view)
+    }
+
+    override fun onItemClick(position: Int) {
+        dialog.show()
     }
 
 }
