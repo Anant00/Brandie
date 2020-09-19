@@ -9,4 +9,11 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
     </style>
+
+    <style name="TransparentToolbar" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
 </resources>

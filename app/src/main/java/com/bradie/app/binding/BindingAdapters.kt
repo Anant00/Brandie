@@ -1,13 +1,16 @@
 package com.bradie.app.binding
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bradie.app.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import kotlin.math.roundToInt
 
 object BindingAdapters {
     @BindingAdapter("visibleGone")
@@ -43,5 +46,19 @@ object BindingAdapters {
     @JvmStatic
     fun setLayoutHeight(view: View, layoutParams: LinearLayout.LayoutParams) {
         view.layoutParams = layoutParams
+    }
+
+    @SuppressLint("SetTextI18n")
+    @BindingAdapter("count")
+    @JvmStatic
+    fun covertToK(view: View, count: Int) {
+        val value = if (count > 999) {
+            (count / 1000).toFloat().roundToInt().toString()
+        } else {
+            count.toString()
+        }
+        if (view is TextView) {
+            view.text = value + "K"
+        }
     }
 }

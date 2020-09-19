@@ -1,8 +1,11 @@
 package com.bradie.app.apiservice
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Hit(
     @SerializedName("id")
     @Expose
@@ -89,4 +92,4 @@ data class Hit(
     @SerializedName("userImageURL")
     @Expose
     var userImageURL: String? = null
-)
+): Parcelable

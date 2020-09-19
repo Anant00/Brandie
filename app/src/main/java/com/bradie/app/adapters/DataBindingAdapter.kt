@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.item_cards_layout.view.*
 
 abstract class DataBindingAdapter<T>(
     diffCallback: DiffUtil.ItemCallback<T>,
-    private val onItemClick: OnItemClick
+    private val onItemClick: OnItemClick,
+    private val onMoreOptionsClick: OnMoreOptionsClick
 ) :
     ListAdapter<T, DataBindingAdapter.DataBindingViewHolder<T>>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<T> {
@@ -23,6 +24,10 @@ abstract class DataBindingAdapter<T>(
         val viewHolder: DataBindingViewHolder<T> = DataBindingViewHolder(binding)
         try {
             binding.root.imMore.setOnClickListener {
+                onMoreOptionsClick.onOptionMenuClick(viewHolder.adapterPosition)
+            }
+
+            binding.root.setOnClickListener {
                 onItemClick.onItemClick(viewHolder.adapterPosition)
             }
         } catch (e: Exception) {
@@ -47,4 +52,8 @@ abstract class DataBindingAdapter<T>(
 
 interface OnItemClick {
     fun onItemClick(position: Int)
+}
+
+interface OnMoreOptionsClick {
+    fun onOptionMenuClick(position: Int)
 }
