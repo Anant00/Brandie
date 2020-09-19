@@ -1,12 +1,15 @@
 package com.bradie.app.view.fragments.home
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
-import com.bradie.app.utils.DEFAULT_QUERY
 import com.bradie.app.utils.ViewStatus
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 class HomeViewModel
 @ViewModelInject
@@ -14,7 +17,6 @@ constructor(private val repoPixabayNetwork: RepoPixabayNetwork): ViewModel() {
 
     private var _viewStatus: LiveData<ViewStatus<ImagesModel>>
             = MutableLiveData()
-
 
     private val _query: MutableLiveData<String> = MutableLiveData("")
     val query: LiveData<String>
@@ -27,13 +29,9 @@ constructor(private val repoPixabayNetwork: RepoPixabayNetwork): ViewModel() {
     fun loadData(query: String) {
         if (query != _query.value) {
             _query.postValue(query)
+            viewModelScope.launch(IO) {
+                _viewStatus = repoPixabayNetwork.loadImage(query = query)
+            }
         }
     }
-
-    val data = _query.switchMap {
-        liveData(IO) {
-            emitSource(repoPixabayNetwork.loadImage(query = _query.value ?: DEFAULT_QUERY))
-        }
-    }
-
 }

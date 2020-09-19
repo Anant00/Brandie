@@ -36,7 +36,7 @@ class TrendingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         homeViewModel.loadData(DEFAULT_QUERY)
-        homeViewModel.data.observe(viewLifecycleOwner, ::processData)
+        homeViewModel.viewStatus.observe(viewLifecycleOwner, ::processData)
     }
 
 
