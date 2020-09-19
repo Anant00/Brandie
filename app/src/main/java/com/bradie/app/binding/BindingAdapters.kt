@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.databinding.BindingAdapter
+import com.bradie.app.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -22,6 +23,7 @@ object BindingAdapters {
             Picasso.get()
                 .load(imageUrl)
                 .tag("image")
+                .placeholder(R.drawable.imgbg)
                 .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(view, object : Callback {
                     override fun onSuccess() {
@@ -29,7 +31,7 @@ object BindingAdapters {
                     }
 
                     override fun onError(e: Exception?) {
-                        Picasso.get().load(imageUrl).into(view)
+                        Picasso.get().load(imageUrl).placeholder(R.drawable.imgbg).into(view)
                     }
 
                 })
