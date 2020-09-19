@@ -58,7 +58,8 @@
 
         <TextView
             android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="4dp"
@@ -66,6 +67,13 @@
             android:gravity="start"
             android:text="@{item.user + ` with Brand Name`}"
             android:textSize="12sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_more_horiz_24" />
 
     </LinearLayout>
 </LinearLayout>
