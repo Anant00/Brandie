@@ -3,16 +3,16 @@ package com.bradie.app.apiservice
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class ImagesModel {
+data class ImagesModel(
     @SerializedName("total")
     @Expose
-    var total: Int? = null
+    var total: Int? = null,
 
     @SerializedName("totalHits")
     @Expose
-    var totalHits: Int? = null
+    var totalHits: Int? = null,
 
     @SerializedName("hits")
     @Expose
     var hits: List<Hit>? = null
-}
+)
