@@ -18,20 +18,24 @@ object BindingAdapters {
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun loadImage(view: ImageView, imageUrl: String?) {
-        Picasso.get()
-            .load(imageUrl)
-            .tag("image")
-            .networkPolicy(NetworkPolicy.OFFLINE)
-            .into(view, object : Callback {
-                override fun onSuccess() {
+        if(!imageUrl.isNullOrEmpty()) {
+            println("user url is $imageUrl")
+            Picasso.get()
+                .load(imageUrl)
+                .tag("image")
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(view, object : Callback {
+                    override fun onSuccess() {
 
-                }
+                    }
 
-                override fun onError(e: Exception?) {
-                    Picasso.get().load(imageUrl).into(view)
-                }
+                    override fun onError(e: Exception?) {
+                        Picasso.get().load(imageUrl).into(view)
+                    }
 
-            })
+                })
+        }
+
     }
 
     @BindingAdapter("height")
