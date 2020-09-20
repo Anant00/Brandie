@@ -37,18 +37,7 @@ class MainActivity : AppCompatActivity() {
                         false
                     }
                 }
-
-//                R.id.navigation_search -> {
-//                    if (activeFragment != exploreFragment) {
-//                        supportFragmentManager.beginTransaction().hide(activeFragment)
-//                            .show(exploreFragment).commit()
-//                        activeFragment = exploreFragment
-//                        true
-//                    } else {
-//                        false
-//                    }
-//                }
-
+                
                 R.id.navigation_profile -> {
                     if (activeFragment != exploreFragment) {
                         supportFragmentManager.beginTransaction().hide(activeFragment)
