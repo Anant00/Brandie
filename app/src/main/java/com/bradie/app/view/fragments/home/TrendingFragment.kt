@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bradie.app.R
@@ -15,7 +15,6 @@ import com.bradie.app.adapters.OnItemClick
 import com.bradie.app.adapters.OnMoreOptionsClick
 import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.databinding.FragmentTrendingBinding
-import com.bradie.app.utils.DEFAULT_QUERY
 import com.bradie.app.utils.Status
 import com.bradie.app.utils.ViewStatus
 import com.bradie.app.view.ImageDetailsActivity
@@ -24,11 +23,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
 class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     private lateinit var binding: FragmentTrendingBinding
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
     private val imagesAdapter: ImagesAdapter by lazy { ImagesAdapter(this, this) }
     private lateinit var dialog: BottomSheetDialog
 
@@ -45,7 +43,6 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setBottomSheet()
-        homeViewModel.loadData(DEFAULT_QUERY)
         homeViewModel.data.observe(viewLifecycleOwner, ::processData)
     }
 
@@ -104,7 +101,6 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     override fun onOptionMenuClick(position: Int) {
         dialog.show()
     }
-
 
     override fun onDestroy() {
         if (dialog.isShowing) {

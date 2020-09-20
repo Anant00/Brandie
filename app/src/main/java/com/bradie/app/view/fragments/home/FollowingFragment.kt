@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bradie.app.R
@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     private lateinit var binding: FragmentFollowingBinding
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
     private val imagesAdapter: ImagesAdapter by lazy {
         ImagesAdapter(this, this)
     }
@@ -45,7 +45,6 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setBottomSheet()
-        homeViewModel.loadData("animals")
         homeViewModel.data.observe(viewLifecycleOwner, ::processData)
     }
 
@@ -101,7 +100,6 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     override fun onOptionMenuClick(position: Int) {
         dialog.show()
     }
-
 
     override fun onDestroy() {
         if (dialog.isShowing) {
