@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
         <data>
             <variable
                 name="item"
@@ -38,11 +37,12 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    app:menu="@menu/toolbar_profile"
                     app:layout_collapseMode="parallax" />
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="42dp"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="4dp"
@@ -51,7 +51,6 @@
                     app:tabIndicator="@drawable/tab_background_selected"
                     app:tabIndicatorColor="@android:color/black"
                     app:tabIndicatorGravity="stretch"
-                    app:tabMaxWidth="0dp"
                     app:tabMode="fixed"
                     app:tabRippleColor="@null"
                     app:tabSelectedTextColor="@color/colorWhite"
@@ -61,7 +60,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewpager"
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
