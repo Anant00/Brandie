@@ -8,22 +8,22 @@ import androidx.fragment.app.Fragment
 import com.bradie.app.adapters.FOLLOWING_FRAGMENT
 import com.bradie.app.adapters.TRENDING_FRAGMENT
 import com.bradie.app.adapters.ViewPagerAdapter
-import com.bradie.app.databinding.FragmentExploreBinding
+import com.bradie.app.databinding.FragmentProfileBinding
 import com.bradie.app.view.fragments.home.FollowingFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExploreFragment: Fragment() {
+class ProfileFragment: Fragment() {
 
-    private lateinit var binding: FragmentExploreBinding
+    private lateinit var binding: FragmentProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentExploreBinding.inflate(inflater, container, false)
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 

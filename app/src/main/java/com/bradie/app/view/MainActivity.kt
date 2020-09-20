@@ -3,8 +3,17 @@ package com.bradie.app.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bradie.app.R
+import com.bradie.app.databinding.ActivityMainBinding
+import com.bradie.app.view.fragments.ProfileFragment
+import com.bradie.app.view.fragments.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val homeFragment by lazy { HomeFragment() }
+    private val exploreFragment by lazy { ProfileFragment() }
+    private var activeFragment: Fragment = HomeFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -37,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                         false
                     }
                 }
-                
+
                 R.id.navigation_profile -> {
                     if (activeFragment != exploreFragment) {
                         supportFragmentManager.beginTransaction().hide(activeFragment)
