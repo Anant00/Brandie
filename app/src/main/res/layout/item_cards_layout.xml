@@ -36,18 +36,42 @@
             app:civ_border_color="#FF000000"
             app:imageUrl="@{item.userImageURL}"/>
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:text="@{item.user + ` with Brand Name`}"
-            android:textSize="12sp"/>
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{item.user}"
+                android:textSize="14sp"/>
 
+            <TextView
+                android:id="@+id/tvBrandName"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/regular"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/with_brand_name"
+                android:textSize="12sp"/>
+        </LinearLayout>
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -78,6 +102,5 @@
         android:layout_marginRight="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_baseline_more_horiz_24" />
-
 </LinearLayout>
 </layout>
