@@ -16,4 +16,5 @@
     <string name="with_brand_name">with Brand Name</string>
     <string name="similar_brands">Similar Brands</string>
     <string name="view_all">view all</string>
+    <string name="brand_name"><u>Brand name</u></string>
 </resources>

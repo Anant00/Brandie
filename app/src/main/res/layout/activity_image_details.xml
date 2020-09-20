@@ -79,6 +79,34 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/bold"
+                    android:gravity="center"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:text="@{item.user+ `\n with`}"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="21sp"
+                    tools:text="User Name \n with" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/bold"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="@string/brand_name"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="19sp" />
+
                 <include
                     android:id="@+id/layout_data_details"
                     layout="@layout/item_data_details"
