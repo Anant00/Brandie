@@ -1,4 +1,4 @@
-package com.bradie.app.view.fragments.home
+package com.bradie.app.view.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.liveData
@@ -12,16 +12,18 @@ import com.bradie.app.utils.DEFAULT_FOLLOWING_QUERY
 import com.bradie.app.utils.DEFAULT_TRENDING_QUERY
 import kotlinx.coroutines.launch
 
-class HomeViewModel
+class SharedViewModel
 @ViewModelInject
-constructor(private val repoPixabayNetwork: RepoPixabayNetwork) : ViewModel() {
+constructor(private val repo: RepoPixabayNetwork) : ViewModel() {
+
     private val _query: MutableLiveData<String> = MutableLiveData()
     val query: LiveData<String>
         get() = _query
+
     init {
         viewModelScope.launch {
-            setQuery(DEFAULT_TRENDING_QUERY)
-            setQuery(DEFAULT_FOLLOWING_QUERY)
+            setQuery(query = DEFAULT_TRENDING_QUERY)
+            setQuery(query = DEFAULT_FOLLOWING_QUERY)
         }
     }
 
@@ -33,7 +35,7 @@ constructor(private val repoPixabayNetwork: RepoPixabayNetwork) : ViewModel() {
 
     val data = _query.switchMap {
         liveData {
-            emitSource(repoPixabayNetwork.loadImage(query = it))
+            emitSource(repo.loadImage(query = it))
         }
     }
 }

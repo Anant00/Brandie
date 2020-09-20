@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
 import com.bradie.app.utils.ViewStatus
-import com.bradie.app.view.fragments.home.HomeViewModel
+import com.bradie.app.view.viewmodel.SharedViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
@@ -28,14 +28,14 @@ class MainViewModelTest {
     @Rule
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
-    private lateinit var mainViewModel: HomeViewModel
+    private lateinit var mainViewModel: SharedViewModel
     private lateinit var networkRepo: RepoPixabayNetwork
 
     @Before
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
         networkRepo = mock(RepoPixabayNetwork::class.java)
-        mainViewModel = HomeViewModel(networkRepo, testCoroutineDispatcher)
+        mainViewModel = SharedViewModel(networkRepo, testCoroutineDispatcher)
     }
 
     @After

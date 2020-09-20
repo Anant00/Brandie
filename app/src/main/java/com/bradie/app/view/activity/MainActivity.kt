@@ -1,13 +1,16 @@
-package com.bradie.app.view
+package com.bradie.app.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.bradie.app.R
 import com.bradie.app.databinding.ActivityMainBinding
-import com.bradie.app.view.fragments.ProfileFragment
+import com.bradie.app.view.fragments.profile.ProfileFragment
 import com.bradie.app.view.fragments.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val homeFragment by lazy { HomeFragment() }

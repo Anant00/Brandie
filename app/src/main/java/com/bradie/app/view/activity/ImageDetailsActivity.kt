@@ -1,4 +1,4 @@
-package com.bradie.app.view
+package com.bradie.app.view.activity
 
 import android.graphics.Color
 import android.os.Bundle

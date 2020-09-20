@@ -1,4 +1,4 @@
-package com.bradie.app.view.fragments
+package com.bradie.app.view.fragments.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

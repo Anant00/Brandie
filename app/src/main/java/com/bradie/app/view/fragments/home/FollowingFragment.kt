@@ -17,7 +17,8 @@ import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.databinding.FragmentFollowingBinding
 import com.bradie.app.utils.Status
 import com.bradie.app.utils.ViewStatus
-import com.bradie.app.view.ImageDetailsActivity
+import com.bradie.app.view.activity.ImageDetailsActivity
+import com.bradie.app.view.viewmodel.SharedViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +27,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     private lateinit var binding: FragmentFollowingBinding
-    private val homeViewModel: HomeViewModel by activityViewModels()
+    private val sharedViewModel: SharedViewModel by activityViewModels()
     private val imagesAdapter: ImagesAdapter by lazy {
         ImagesAdapter(this, this)
     }
@@ -45,7 +46,7 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setBottomSheet()
-        homeViewModel.data.observe(viewLifecycleOwner, ::processData)
+        sharedViewModel.data.observe(viewLifecycleOwner, ::processData)
     }
 
     private fun processData(data: ViewStatus<ImagesModel>) {
