@@ -34,8 +34,6 @@ constructor(private val repo: RepoPixabayNetwork) : ViewModel() {
     }
 
     val data = _query.switchMap {
-        liveData {
-            emitSource(repo.loadImage(query = it))
-        }
+        repo.loadImage(query = it)
     }
 }

@@ -9,7 +9,6 @@ import com.bradie.app.view.viewmodel.SharedViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
@@ -35,7 +34,7 @@ class MainViewModelTest {
     fun setUp() {
         Dispatchers.setMain(testCoroutineDispatcher)
         networkRepo = mock(RepoPixabayNetwork::class.java)
-        mainViewModel = SharedViewModel(networkRepo, testCoroutineDispatcher)
+        mainViewModel = SharedViewModel(networkRepo)
     }
 
     @After
@@ -43,7 +42,6 @@ class MainViewModelTest {
         Dispatchers.resetMain()
         testCoroutineDispatcher.cleanupTestCoroutines()
     }
-
 
     @Test
     fun `is viewModel emitting the value as soon as we create the object of it`() {
@@ -78,7 +76,6 @@ class MainViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `check if load data is called on each UNIQUE query`() {
-        testCoroutineDispatcher.runBlockingTest {
             val observer = mock<Observer<ViewStatus<ImagesModel>>>()
             verifyZeroInteractions(networkRepo)
             mainViewModel.data.observeForever(observer)
@@ -89,18 +86,15 @@ class MainViewModelTest {
             verifyNoMoreInteractions(networkRepo)
             mainViewModel.setQuery(query = "bar")
             verify(networkRepo).loadImage("bar")
-        }
     }
 
     @Test
     fun `fetch and change while Observed`() {
         val observer = mock<Observer<ViewStatus<ImagesModel>>>()
-        testCoroutineDispatcher.runBlockingTest {
             mainViewModel.data.observeForever(observer)
             mainViewModel.setQuery("foo")
             mainViewModel.setQuery("bar")
             verify(networkRepo).loadImage("foo")
             verify(networkRepo).loadImage("bar")
-        }
     }
 }
