@@ -50,7 +50,7 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
 
     private fun processData(data: ViewStatus<ImagesModel>) {
         binding.resource = data
-        when(data.status) {
+        when (data.status) {
             Status.SUCCESS -> handleSuccess(data.data)
             Status.ERROR -> handleError()
             Status.LOADING -> handleLoading()
@@ -66,11 +66,9 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
     }
 
     private fun handleError() {
-
     }
 
     private fun handleLoading() {
-
     }
 
     private fun setRecyclerView() {
@@ -107,5 +105,4 @@ class FollowingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         }
         super.onDestroy()
     }
-
 }

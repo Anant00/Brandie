@@ -22,7 +22,7 @@ object BindingAdapters {
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun loadImage(view: ImageView, imageUrl: String?) {
-        if(!imageUrl.isNullOrEmpty()) {
+        if (!imageUrl.isNullOrEmpty()) {
             Picasso.get()
                 .load(imageUrl)
                 .tag("image")
@@ -30,16 +30,13 @@ object BindingAdapters {
                 .networkPolicy(NetworkPolicy.OFFLINE)
                 .into(view, object : Callback {
                     override fun onSuccess() {
-
                     }
 
                     override fun onError(e: Exception?) {
                         Picasso.get().load(imageUrl).placeholder(R.drawable.imgbg).into(view)
                     }
-
                 })
         }
-
     }
 
     @BindingAdapter("height")

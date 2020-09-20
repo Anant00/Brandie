@@ -1,4 +1,5 @@
 package com.bradie.app.adapters
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,7 +9,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bradie.app.BR
 import kotlinx.android.synthetic.main.item_cards_layout.view.*
-
 
 abstract class DataBindingAdapter<T>(
     diffCallback: DiffUtil.ItemCallback<T>,

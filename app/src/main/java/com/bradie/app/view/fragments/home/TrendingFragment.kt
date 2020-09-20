@@ -46,10 +46,9 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         homeViewModel.data.observe(viewLifecycleOwner, ::processData)
     }
 
-
     private fun processData(data: ViewStatus<ImagesModel>) {
         binding.resource = data
-        when(data.status) {
+        when (data.status) {
             Status.SUCCESS -> handleSuccess(data.data)
             Status.ERROR -> handleError()
             Status.LOADING -> handleLoading()
@@ -64,13 +63,9 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         }
     }
 
-    private fun handleError() {
+    private fun handleError() {}
 
-    }
-
-    private fun handleLoading() {
-
-    }
+    private fun handleLoading() {}
 
     private fun setRecyclerView() {
         binding.recyclerViewImages.apply {
@@ -108,5 +103,4 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         }
         super.onDestroy()
     }
-
 }

@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             add(R.id.container, homeFragment, getString(R.string.home)).hide(homeFragment)
             add(R.id.container, exploreFragment, getString(R.string.explore)).hide(exploreFragment)
-
         }.commit()
 
         initListeners()

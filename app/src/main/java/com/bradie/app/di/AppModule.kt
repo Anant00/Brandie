@@ -3,19 +3,17 @@ package com.bradie.app.di
 import com.bradie.app.apiservice.Api
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
 import com.bradie.app.utils.BASE_URL
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.InstallIn
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import okhttp3.OkHttpClient
+import javax.inject.Singleton
+import java.util.concurrent.TimeUnit
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
+import okhttp3.OkHttpClient
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
+import retrofit2.Retrofit
 
 @Module
 @InstallIn(ApplicationComponent::class)
@@ -51,11 +49,4 @@ class AppModule {
     fun providePixabayRepo(api: Api): RepoPixabayNetwork {
         return RepoPixabayNetwork(api = api)
     }
-
-    @Singleton
-    @Provides
-    fun provideIODispatcher(): CoroutineDispatcher {
-        return Dispatchers.IO
-    }
-
 }

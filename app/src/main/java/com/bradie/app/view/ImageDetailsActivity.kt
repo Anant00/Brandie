@@ -9,7 +9,6 @@ import com.bradie.app.apiservice.Hit
 import com.bradie.app.databinding.ActivityImageDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class ImageDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageDetailsBinding
@@ -17,14 +16,12 @@ class ImageDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.setDecorFitsSystemWindows(false)
         window.statusBarColor = Color.TRANSPARENT
-        binding  = DataBindingUtil.setContentView(this, R.layout.activity_image_details)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_image_details)
         getData()
     }
 
     private fun getData() {
         val data = intent.getParcelableExtra<Hit>("data")
         binding.item = data
-        println("url is ${data?.largeImageURL}")
     }
-
 }

@@ -2,10 +2,16 @@ package com.bradie.app
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.bradie.app.apiservice.ImagesModel
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
+import com.bradie.app.utils.ViewStatus
 import com.bradie.app.view.fragments.home.HomeViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,10 +22,8 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class MainViewModelTest {
-    @get:Rule
-    var coroutinesTestRule = CoroutinesTestRule()
 
-    private val testDispatchers = TestCoroutineDispatcher()
+    private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @Rule
     @JvmField
@@ -29,8 +33,15 @@ class MainViewModelTest {
 
     @Before
     fun setUp() {
+        Dispatchers.setMain(testCoroutineDispatcher)
         networkRepo = mock(RepoPixabayNetwork::class.java)
-        mainViewModel = HomeViewModel(networkRepo, testDispatchers)
+        mainViewModel = HomeViewModel(networkRepo, testCoroutineDispatcher)
+    }
+
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+        testCoroutineDispatcher.cleanupTestCoroutines()
     }
 
 
@@ -66,19 +77,30 @@ class MainViewModelTest {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun `check if load more data is called on each UNIQUE page increment`() {
-        runBlocking {
-            mainViewModel.dataOnMain.observeForever(mock())
-            verify(networkRepo).loadImage(mainViewModel.query.value!!)
-            reset(networkRepo)
-            mainViewModel.setQuery(query = "puppies")
-            verify(networkRepo).loadImage("puppies")
-            mainViewModel.setQuery(query = "puppies")
+    fun `check if load data is called on each UNIQUE query`() {
+        testCoroutineDispatcher.runBlockingTest {
+            val observer = mock<Observer<ViewStatus<ImagesModel>>>()
             verifyZeroInteractions(networkRepo)
-            mainViewModel.setQuery(query = "dogs")
-            verify(networkRepo).loadImage("dogs")
-            mainViewModel.setQuery(query = "dogs")
+            mainViewModel.data.observeForever(observer)
+            mainViewModel.setQuery("foo")
+            verify(networkRepo).loadImage("foo")
+            reset(networkRepo)
+            mainViewModel.setQuery(query = "foo")
             verifyNoMoreInteractions(networkRepo)
+            mainViewModel.setQuery(query = "bar")
+            verify(networkRepo).loadImage("bar")
+        }
+    }
+
+    @Test
+    fun `fetch and change while Observed`() {
+        val observer = mock<Observer<ViewStatus<ImagesModel>>>()
+        testCoroutineDispatcher.runBlockingTest {
+            mainViewModel.data.observeForever(observer)
+            mainViewModel.setQuery("foo")
+            mainViewModel.setQuery("bar")
+            verify(networkRepo).loadImage("foo")
+            verify(networkRepo).loadImage("bar")
         }
     }
 }

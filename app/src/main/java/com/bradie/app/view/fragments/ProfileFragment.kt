@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment: Fragment() {
+class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
 
@@ -32,9 +32,8 @@ class ProfileFragment: Fragment() {
         setViewPager()
     }
 
-
     private fun setViewPager() {
-        val adapter = object : ViewPagerAdapter(requireActivity())  {
+        val adapter = object : ViewPagerAdapter(requireActivity()) {
             override fun createFragment(position: Int): Fragment {
                 return setFragments()[position]?.invoke() ?: throw IndexOutOfBoundsException()
             }
@@ -54,7 +53,7 @@ class ProfileFragment: Fragment() {
     }
 
     private fun setFragments(): Map<Int, () -> Fragment> {
-      return  mapOf(
+        return mapOf(
             TRENDING_FRAGMENT to { FollowingFragment() },
             FOLLOWING_FRAGMENT to { FollowingFragment() }
         )

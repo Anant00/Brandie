@@ -92,4 +92,4 @@ data class Hit(
     @SerializedName("userImageURL")
     @Expose
     var userImageURL: String? = null
-): Parcelable
+) : Parcelable
