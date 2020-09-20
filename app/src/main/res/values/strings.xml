@@ -17,4 +17,8 @@
     <string name="similar_brands">Similar Brands</string>
     <string name="view_all">view all</string>
     <string name="brand_name"><u>Brand name</u></string>
+    <string name="brandie_user">Brandie User</string>
+    <string name="_1k_n_brandie_points">1K \n Brandie Points</string>
+    <string name="_15k_n_shots">15K \n Shots</string>
+    <string name="vertical_line">|</string>
 </resources>

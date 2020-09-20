@@ -38,7 +38,18 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                R.id.navigation_search -> {
+//                R.id.navigation_search -> {
+//                    if (activeFragment != exploreFragment) {
+//                        supportFragmentManager.beginTransaction().hide(activeFragment)
+//                            .show(exploreFragment).commit()
+//                        activeFragment = exploreFragment
+//                        true
+//                    } else {
+//                        false
+//                    }
+//                }
+
+                R.id.navigation_profile -> {
                     if (activeFragment != exploreFragment) {
                         supportFragmentManager.beginTransaction().hide(activeFragment)
                             .show(exploreFragment).commit()
@@ -48,19 +59,6 @@ class MainActivity : AppCompatActivity() {
                         false
                     }
                 }
-
-//                R.id.navigation_profile -> {
-////                    if (activeFragment != settingsFragment) {
-////                        supportFragmentManager.beginTransaction().hide(activeFragment)
-////                            .show(settingsFragment).commit()
-////                        activeFragment = settingsFragment
-////                        true
-////                    } else {
-////                        false
-////                    }
-////                }
-//                else -> false
-//            }
                 else -> {
                     false
                 }
