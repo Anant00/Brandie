@@ -44,7 +44,7 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setBottomSheet()
-        sharedViewModel.data.observe(viewLifecycleOwner, ::processData)
+        sharedViewModel.defaultDataTrending.observe(viewLifecycleOwner, ::processData)
     }
 
     private fun processData(data: ViewStatus<ImagesModel>) {

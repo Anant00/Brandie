@@ -1,14 +1,11 @@
 package com.bradie.app.view.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
 import com.bradie.app.utils.DEFAULT_FOLLOWING_QUERY
 import com.bradie.app.utils.DEFAULT_TRENDING_QUERY
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 
 class SharedViewModel
@@ -34,5 +31,13 @@ constructor(private val repo: RepoPixabayNetwork) : ViewModel() {
 
     val data = _query.switchMap {
         repo.loadImage(query = it)
+    }
+
+    val defaultDataTrending = liveData(IO) {
+            emitSource(repo.loadImage(query = DEFAULT_TRENDING_QUERY))
+        }
+
+    val defaultFollowingData = liveData(IO) {
+        emitSource(repo.loadImage(query = DEFAULT_FOLLOWING_QUERY))
     }
 }

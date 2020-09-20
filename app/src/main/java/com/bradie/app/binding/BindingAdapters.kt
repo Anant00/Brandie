@@ -7,6 +7,10 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bradie.app.R
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
@@ -23,19 +27,11 @@ object BindingAdapters {
     @JvmStatic
     fun loadImage(view: ImageView, imageUrl: String?) {
         if (!imageUrl.isNullOrEmpty()) {
-            Picasso.get()
+            Glide.with(view.context)
                 .load(imageUrl)
-                .tag("image")
-                .placeholder(R.drawable.imgbg)
-                .networkPolicy(NetworkPolicy.OFFLINE)
-                .into(view, object : Callback {
-                    override fun onSuccess() {
-                    }
-
-                    override fun onError(e: Exception?) {
-                        Picasso.get().load(imageUrl).placeholder(R.drawable.imgbg).into(view)
-                    }
-                })
+                .override(Target.SIZE_ORIGINAL)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(view)
         }
     }
 

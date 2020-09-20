@@ -14,7 +14,6 @@ class ImageDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageDetailsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setDecorFitsSystemWindows(false)
         window.statusBarColor = Color.TRANSPARENT
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_details)
         getData()
