@@ -1,6 +1,6 @@
 
 
-BrandieR is a **remake** of official [Brandie Android app](https://play.google.com/store/apps/details?id=io.brandie.brandie).
+BrandieR is a **remake** of official [Brandie Android app](https://play.google.com/store/apps/details?id=io.brandie.brandie) .
 
 # BrandieR 📱 (work-in-progress 👷🔧️👷‍♀️⛏)
 
@@ -11,7 +11,7 @@ BrandieR is an app which attempts to use the latest cutting edge libraries and t
  * Entirely written in [Kotlin](https://kotlinlang.org/)
  * Uses [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html) and [RxJava](https://github.com/ReactiveX/RxJava)
  * Uses many of the [Architecture Components](https://developer.android.com/topic/libraries/architecture/): ViewModel, Lifecycle, Navigation
- * Uses [Hilt](https://dagger.dev/hilt/) for dependency injection
+ * Uses 🔪 [Dagger-Hilt](https://dagger.dev/hilt/) for dependency injection
  * Uses [MVVM architecture](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
  * Unit testing
  * UI testing - coming soon
