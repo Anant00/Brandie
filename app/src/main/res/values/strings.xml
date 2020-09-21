@@ -23,4 +23,6 @@
     <string name="vertical_line">|</string>
     <string name="notifications">Notifications</string>
     <string name="similar_photos">Similar Photos</string>
+    <string name="trending">Trending</string>
+    <string name="top_brands">Top Brands</string>
 </resources>
