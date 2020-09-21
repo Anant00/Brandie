@@ -51,7 +51,7 @@
                     android:layout_gravity="start"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/hermes" />
+                    android:src="@drawable/puma" />
 
                 <ImageView
                     android:layout_width="52dp"
@@ -59,7 +59,7 @@
                     android:layout_gravity="start"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:src="@drawable/odlr" />
+                    android:src="@drawable/hermes" />
             </LinearLayout>
         </HorizontalScrollView>
 </layout>
