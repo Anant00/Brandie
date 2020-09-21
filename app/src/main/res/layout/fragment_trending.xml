@@ -74,6 +74,7 @@
                     android:paddingTop="16dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="16dp"
+                    android:letterSpacing=".12"
                     android:text="@string/top_brands"
                     android:textColor="@color/colorBlack"
                     android:textSize="21sp" />
@@ -91,6 +92,7 @@
                 android:paddingStart="8dp"
                 android:paddingTop="16dp"
                 android:paddingEnd="8dp"
+                android:letterSpacing=".12"
                 android:paddingBottom="16dp"
                 android:text="@string/trending"
                 android:textColor="@color/colorBlack"
