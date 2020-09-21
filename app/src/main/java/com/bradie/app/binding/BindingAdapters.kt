@@ -3,7 +3,6 @@ package com.bradie.app.binding
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -28,12 +27,6 @@ object BindingAdapters {
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(view)
         }
-    }
-
-    @BindingAdapter("height")
-    @JvmStatic
-    fun setLayoutHeight(view: View, layoutParams: LinearLayout.LayoutParams) {
-        view.layoutParams = layoutParams
     }
 
     @SuppressLint("SetTextI18n")
