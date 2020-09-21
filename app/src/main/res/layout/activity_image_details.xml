@@ -103,6 +103,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
+                    android:textAllCaps="true"
                     android:text="@string/brand_name"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="19sp" />
@@ -112,12 +113,82 @@
                     layout="@layout/item_data_details"
                     app:item="@{item}"/>
 
+                <LinearLayout
+                    android:id="@+id/linHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/extrabold"
+                        android:text="@string/similar_brands"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="21sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:text="@string/view_all"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
                 <include
                     layout="@layout/item_similar_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="4dp"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/extrabold"
+                        android:text="@string/similar_photos"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="21sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:text="@string/view_all"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <include
+                    layout="@layout/item_similar_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
