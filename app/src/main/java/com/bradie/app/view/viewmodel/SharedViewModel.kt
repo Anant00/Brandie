@@ -1,7 +1,12 @@
 package com.bradie.app.view.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
 import com.bradie.app.repository.networkbound.RepoPixabayNetwork
 import com.bradie.app.utils.DEFAULT_FOLLOWING_QUERY
 import com.bradie.app.utils.DEFAULT_TRENDING_QUERY

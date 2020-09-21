@@ -1,7 +1,29 @@
 package com.bradie.app.utils
 
-sealed class ViewStatus<T>
+data class ViewStatus<out T>(val status: Status, val data: T?, val message: String?) {
+    companion object {
+        fun <T> success(data: T?): ViewStatus<T> {
+            return ViewStatus(
+                Status.SUCCESS,
+                data,
+                null
+            )
+        }
 
-object LOADING: ViewStatus<Nothing>()
-data class FAILED<T>(val message: String): ViewStatus<T>()
-data class SUCCESS<T>(val data: T): ViewStatus<T>()
+        fun <T> error(msg: String?, data: T? = null): ViewStatus<T> {
+            return ViewStatus(
+                Status.ERROR,
+                data,
+                msg
+            )
+        }
+
+        fun <T> loading(msg: String?, data: T?): ViewStatus<T> {
+            return ViewStatus(
+                Status.LOADING,
+                data,
+                msg
+            )
+        }
+    }
+}
