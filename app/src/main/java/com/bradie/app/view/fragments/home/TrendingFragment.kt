@@ -45,7 +45,7 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         setRecyclerView()
         setBottomSheet()
 
-        //Observe the LiveData from the viewModel.
+        // Observe the LiveData from the viewModel.
         sharedViewModel.defaultDataTrending.observe(viewLifecycleOwner, ::processData)
     }
 
