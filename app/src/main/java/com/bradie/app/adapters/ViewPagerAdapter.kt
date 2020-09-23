@@ -13,7 +13,7 @@ const val FOLLOWING_FRAGMENT = 1
  * A generic and extendable adapter. Default fragments are @class TrendingFragment
  * and @class FollowingFragment.
  *
- * Override the createFragment method to provide set another fragments.
+ * Override the createFragment method to set another fragments.
  */
 open class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
