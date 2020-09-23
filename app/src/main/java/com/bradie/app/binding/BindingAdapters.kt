@@ -10,6 +10,11 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.target.Target
 import kotlin.math.roundToInt
 
+/**
+ * A class that has custom adapter to be used by data binding.
+ * Using these adapters with data-binding avoids boilerplate code.
+ * @see {https://developer.android.com/topic/libraries/data-binding}
+ */
 object BindingAdapters {
     @BindingAdapter("visibleGone")
     @JvmStatic
@@ -17,6 +22,13 @@ object BindingAdapters {
         view.visibility = if (show) View.VISIBLE else View.GONE
     }
 
+    /**
+     * Adapter used by ImageView.
+     * The @param view and @param imageUrl are sent via xml
+     * with app:ImageUrl=@{item.Url}. The url is the object of the data model
+     * that is being used in the xml and view is passed itself, without mentioning it
+     * explicitly.
+     */
     @BindingAdapter("imageUrl")
     @JvmStatic
     fun loadImage(view: ImageView, imageUrl: String?) {
@@ -29,6 +41,10 @@ object BindingAdapters {
         }
     }
 
+    /**
+     * A method to convert the number of likes, views, and shares to the nearest 1000 int
+     * value.
+     */
     @SuppressLint("SetTextI18n")
     @BindingAdapter("count")
     @JvmStatic
