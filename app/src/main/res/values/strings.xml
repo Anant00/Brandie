@@ -25,4 +25,6 @@
     <string name="similar_photos">Similar Photos</string>
     <string name="trending">Trending</string>
     <string name="top_brands">Top Brands</string>
+    <string name="photos">Photos</string>
+    <string name="brands">Brands</string>
 </resources>
