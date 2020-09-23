@@ -52,7 +52,6 @@
             android:text="@string/facebook"
             android:textColor="@color/colorBlack"
             android:textSize="16sp" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -161,6 +160,5 @@
             android:text="@string/download"
             android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
-
     </LinearLayout>
 </LinearLayout>

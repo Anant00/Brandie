@@ -61,13 +61,10 @@
                         android:gravity="center"
                         android:text="+19 \n more"
                         android:textColor="@color/colorWhite"
-                        android:textSize="21sp"
-                        />
+                        android:textSize="21sp" />
                 </FrameLayout>
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
         </HorizontalScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

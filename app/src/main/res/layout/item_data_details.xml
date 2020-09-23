@@ -61,6 +61,5 @@
             app:drawableStartCompat="@drawable/ic_baseline_reply_24"
             app:drawableTint="@color/colorPrimaryDark"
             tools:text="1K" />
-
     </LinearLayout>
 </layout>

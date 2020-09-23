@@ -62,7 +62,6 @@
                         app:layout_collapseMode="parallax"
                         app:layout_collapseParallaxMultiplier="0.3"
                         tools:ignore="ContentDescription" />
-
                 </com.google.android.material.card.MaterialCardView>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
