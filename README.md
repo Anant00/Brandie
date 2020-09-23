@@ -13,7 +13,7 @@ BrandieR is an app which attempts to use the latest cutting edge libraries and t
  * Uses many of the [Architecture Components](https://developer.android.com/topic/libraries/architecture/): ViewModel, Lifecycle, LiveData
  * Uses 🔪 [Dagger-Hilt](https://dagger.dev/hilt/) for dependency injection
  * Uses [MVVM architecture](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
- * Uses [LeakCanary](https://square.github.io/leakcanary/) to detect leaks 💧.
+ * Uses [LeakCanary](https://square.github.io/leakcanary/) to detect leaks 💧
  * Unit testing
  * UI testing - coming soon
 
