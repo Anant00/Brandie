@@ -44,9 +44,15 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         setBottomSheet()
+
+        //Observe the LiveData from the viewModel.
         sharedViewModel.defaultDataTrending.observe(viewLifecycleOwner, ::processData)
     }
 
+    /**
+     * Handle liveData changes.
+     * Check status individually and handle appropriately for each case.
+     */
     private fun processData(data: ViewStatus<ImagesModel>) {
         binding.resource = data
         when (data.status) {
@@ -86,6 +92,10 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         dialog.setContentView(view)
     }
 
+    /**
+     * Handle click on recyclerView items.
+     * use position to get the item data of clicked view.
+     */
     override fun onItemClick(position: Int) {
         val hitModel = imagesAdapter.currentList[position]
         startActivity(
@@ -98,6 +108,10 @@ class TrendingFragment : Fragment(), OnItemClick, OnMoreOptionsClick {
         dialog.show()
     }
 
+    /**
+     * Make sure to close any opened dialogs as it would leak memory
+     * if activity is destroyed and dialogs is not closed.
+     */
     override fun onDestroy() {
         if (dialog.isShowing) {
             dialog.dismiss()

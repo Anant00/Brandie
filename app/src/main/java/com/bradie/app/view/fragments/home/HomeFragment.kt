@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bradie.app.R
 import com.bradie.app.adapters.FOLLOWING_FRAGMENT
 import com.bradie.app.adapters.TRENDING_FRAGMENT
 import com.bradie.app.adapters.ViewPagerAdapter
@@ -41,9 +42,11 @@ class HomeFragment : Fragment() {
         }.attach()
     }
 
+    @Throws(IndexOutOfBoundsException::class)
     private fun getTabTitle(position: Int) = when (position) {
-        TRENDING_FRAGMENT -> "Trending"
-        FOLLOWING_FRAGMENT -> "Following"
-        else -> ""
+        TRENDING_FRAGMENT -> getString(R.string.trending)
+        FOLLOWING_FRAGMENT -> getString(R.string.following)
+        else -> throw IndexOutOfBoundsException("More than 2 fragments are not accepted. Override" +
+                "the ViewPager to do set more than 2 fragments.")
     }
 }
