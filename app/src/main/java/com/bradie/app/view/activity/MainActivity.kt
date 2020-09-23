@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     /**
-     * lazy is delegated property.
+     * lazy is a delegated property.
      * Read more @see {https://kotlinlang.org/docs/reference/delegated-properties.html}
      *
      * The lazy initialisation first checks if the variable has been called earlier. If yes, it
-     * returns the same value with same hashCode. If not, if creates a new one and returns the value.
+     * returns the same value with same hashCode. If not, it creates a new one and returns the value.
      * The variable is initialised only once.
      */
     private val homeFragment by lazy { HomeFragment() }
