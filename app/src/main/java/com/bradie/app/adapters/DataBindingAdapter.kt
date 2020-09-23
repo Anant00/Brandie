@@ -10,6 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bradie.app.BR
 import kotlinx.android.synthetic.main.item_cards_layout.view.*
 
+/**
+ * A generic adapter, helps in removing boilerplate code.
+ * This adapter extends the ListAdapter. ListAdapter uses DiffUtil internally.
+ * DiffUtils helps in maintaining the smoothness of recyclerView. It updates only those items
+ * which are not present already in the database. Unlike recyclerview, which refreshes whole list
+ * of data to update recycleView even for a single item, listAdapter, on the other hand, updates
+ * only the required new item.
+ *
+ * Read more about listAdapter @see {https://developer.android.com/reference/androidx/recyclerview/widget/ListAdapter}
+ * Read more about DiffUtil @see {https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil}
+ */
 abstract class DataBindingAdapter<T>(
     diffCallback: DiffUtil.ItemCallback<T>,
     private val onItemClick: OnItemClick,
@@ -22,6 +33,11 @@ abstract class DataBindingAdapter<T>(
             DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
 
         val viewHolder: DataBindingViewHolder<T> = DataBindingViewHolder(binding)
+
+        /**
+         * Dispatching the click events. Note that these 'clickOnListeners' should not be set in
+         * onBindViewHolder as it may get called multiple times. It may lag the recyclerview scroll.
+         */
         try {
             binding.root.imMore.setOnClickListener {
                 onMoreOptionsClick.onOptionMenuClick(viewHolder.adapterPosition)
@@ -43,6 +59,11 @@ abstract class DataBindingAdapter<T>(
         private val binding: ViewDataBinding
     ) :
         RecyclerView.ViewHolder(binding.root) {
+        /**
+         *  Be sure that you have set 'item' as variable in your recyclerView item layout. It won't
+         *  find the 'item' variable otherwise. Also, since this is the generic adapter, make sure
+         *  to use same variable in all recyclerView item layouts.
+         */
         fun bind(item: T) {
             binding.setVariable(BR.item, item)
             binding.executePendingBindings()
@@ -50,6 +71,9 @@ abstract class DataBindingAdapter<T>(
     }
 }
 
+/**
+ * Interface which are triggered by click events on items layout.
+ */
 interface OnItemClick {
     fun onItemClick(position: Int)
 }
