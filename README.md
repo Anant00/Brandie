@@ -13,6 +13,7 @@ BrandieR is an app which attempts to use the latest cutting edge libraries and t
  * Uses many of the [Architecture Components](https://developer.android.com/topic/libraries/architecture/): ViewModel, Lifecycle, LiveData
  * Uses 🔪 [Dagger-Hilt](https://dagger.dev/hilt/) for dependency injection
  * Uses [MVVM architecture](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
+ * Uses [LeakCanary](https://square.github.io/leakcanary/) to detect leaks 💧
  * Unit testing
  * UI testing - coming soon
 
@@ -35,3 +36,9 @@ Once you obtain the keys, you can set them in your [gradle.properties](/gradle.p
 # Get these from pixabay.com
 ApiKey=<insert>
 ```
+
+### Downloads
+
+Allow .apk file from unknown sources. See [this](https://www.maketecheasier.com/install-apps-from-unknown-sources-android/)
+
+Download the debug apk from [here](https://drive.google.com/file/d/1qglbJ3vyBZbWVS0j9s6zrF2P5ohN9uPL/view?usp=sharing)
