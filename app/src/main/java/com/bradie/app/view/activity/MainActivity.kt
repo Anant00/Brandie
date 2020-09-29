@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         init()
+        initListeners()
     }
 
     /**
@@ -51,7 +52,10 @@ class MainActivity : AppCompatActivity() {
             add(R.id.container, homeFragment, getString(R.string.home)).hide(homeFragment)
             add(R.id.container, exploreFragment, getString(R.string.explore)).hide(exploreFragment)
         }.commit()
-        initListeners()
+
+        supportFragmentManager.beginTransaction()
+            .show(homeFragment).commit()
+        activeFragment = homeFragment
     }
 
     /**
@@ -59,10 +63,6 @@ class MainActivity : AppCompatActivity() {
      * Check if the active fragment is same as the on being requested. If yes, don't do anything.
      */
     private fun initListeners() {
-        supportFragmentManager.beginTransaction()
-            .show(homeFragment).commit()
-        activeFragment = homeFragment
-
         binding.bottomNavigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_home -> {
