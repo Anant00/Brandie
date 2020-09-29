@@ -74,7 +74,7 @@ constructor(private val repo: RepoPixabayNetwork) : ViewModel() {
      */
     val defaultDataTrending = liveData(IO) {
             emitSource(repo.loadImage(query = DEFAULT_TRENDING_QUERY))
-        }
+    }
 
     val defaultFollowingData = liveData(IO) {
         emitSource(repo.loadImage(query = DEFAULT_FOLLOWING_QUERY))
