@@ -16,7 +16,7 @@ class ImageDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         window.statusBarColor = Color.TRANSPARENT
         binding = DataBindingUtil.setContentView(this, R.layout.activity_image_details)
-        getData()
+        receiveDataFromPreviousPageAndInflateIt()
     }
 
     /**
@@ -25,7 +25,7 @@ class ImageDetailsActivity : AppCompatActivity() {
      * These would make the model parcelable and that could be sent via `putExtra()` from the
      * previous activity or fragment.
      */
-    private fun getData() {
+    private fun receiveDataFromPreviousPageAndInflateIt() {
         val data = intent.getParcelableExtra<Hit>("data")
 
         /**
