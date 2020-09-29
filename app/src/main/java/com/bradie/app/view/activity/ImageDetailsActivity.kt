@@ -23,7 +23,7 @@ class ImageDetailsActivity : AppCompatActivity() {
      * Get the data sent from the previous fragment.
      * The model `HIT` must be annotated by @Parcelise and extended with Parcelable.
      * These would make the model parcelable and that could be sent via `putExtra()` from the
-     * previous activity of fragment.
+     * previous activity or fragment.
      */
     private fun getData() {
         val data = intent.getParcelableExtra<Hit>("data")
