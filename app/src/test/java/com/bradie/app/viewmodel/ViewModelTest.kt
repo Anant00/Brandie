@@ -1,4 +1,4 @@
-package com.bradie.app
+package com.bradie.app.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
