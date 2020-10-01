@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.bradie.app.apiservice.Api
 import com.bradie.app.apiservice.ImagesModel
-import com.bradie.app.mock
+import com.bradie.app.utilstest.mock
 import com.bradie.app.utils.DEFAULT_TRENDING_QUERY
 import com.bradie.app.utils.FakeModel
 import com.bradie.app.utils.ViewStatus
@@ -43,6 +43,5 @@ class RepoPixabayNetworkTest {
          * the data that was set to api call.
          */
         verify(api, only()).getImages(DEFAULT_TRENDING_QUERY)
-
     }
 }

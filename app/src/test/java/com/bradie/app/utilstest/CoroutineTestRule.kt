@@ -1,4 +1,4 @@
-package com.bradie.app
+package com.bradie.app.utilstest
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

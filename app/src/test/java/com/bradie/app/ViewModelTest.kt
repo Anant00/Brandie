@@ -45,7 +45,7 @@ class MainViewModelTest {
 
     @Test
     fun `is viewModel emitting the value as soon as we create the object of it`() {
-        val observer = mock<Observer<String>>()
+        val observer = com.bradie.app.utilstest.mock<Observer<String>>()
         verifyZeroInteractions(observer)
         mainViewModel.setQuery("dogs")
         mainViewModel.query.observeForever(observer)
@@ -55,7 +55,7 @@ class MainViewModelTest {
 
     @Test
     fun `check if query is updated on called only for UNIQUE value`() {
-        val observer = mock<Observer<String>>()
+        val observer = com.bradie.app.utilstest.mock<Observer<String>>()
         verifyZeroInteractions(observer)
         mainViewModel.setQuery(query = "cats")
         mainViewModel.query.observeForever(observer)
@@ -76,7 +76,7 @@ class MainViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `check if load data is called on each UNIQUE query`() {
-            val observer = mock<Observer<ViewStatus<ImagesModel>>>()
+            val observer = com.bradie.app.utilstest.mock<Observer<ViewStatus<ImagesModel>>>()
             verifyZeroInteractions(networkRepo)
             mainViewModel.data.observeForever(observer)
             mainViewModel.setQuery("foo")
@@ -90,7 +90,7 @@ class MainViewModelTest {
 
     @Test
     fun `fetch and change while Observed`() {
-        val observer = mock<Observer<ViewStatus<ImagesModel>>>()
+        val observer = com.bradie.app.utilstest.mock<Observer<ViewStatus<ImagesModel>>>()
             mainViewModel.data.observeForever(observer)
             mainViewModel.setQuery("foo")
             mainViewModel.setQuery("bar")
